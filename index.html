@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>תמונות נברא — חנות</title>
+  <meta name="description" content="יצירות אומנות תלת מימדיות •עיצוב לפי בקשה •עבודת יד •. כל יצירה מיוצרת בבאר שבע." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#ffffff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--chip:#f3f4f6;--accent:#111111}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:16px;padding:12px 18px;font-weight:600;background:var(--accent);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .btn.outline{background:#fff;color:var(--text);border:1px solid var(--border)}
+    .btn:active{transform:translateY(1px)}
+    .chip{display:inline-block;background:var(--chip);border:1px solid var(--border);padding:4px 10px;border-radius:999px;font-size:12px;color:#374151}
+    header.sticky{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{height:32px;width:32px;border-radius:10px;background:#111;color:#fff;display:grid;place-items:center;font-weight:800}
+    .lang{display:flex;gap:10px;align-items:center;font-size:13px;color:#4b5563}
+    .lang a{padding:6px 10px;border-radius:10px;border:1px solid transparent}
+    .lang a.active{border-color:var(--border);background:#fff}
+    .hero{border-bottom:1px solid var(--border);background:linear-gradient(#fafafa,#fff)}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:24px;padding:56px 0}
+    @media(min-width:840px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:40px;padding:88px 0}}
+    .hero img{width:100%;height:100%;object-fit:cover;border-radius:22px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    h1{font-size:40px;line-height:1.1;margin:0}
+    h2{font-size:28px;margin:0}
+    p{color:var(--muted);line-height:1.7}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--border);border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+    .card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f3f4f6}
+    .card .body{padding:14px}
+    .row{display:flex;justify-content:space-between;gap:12px}
+    .title{font-weight:600}
+    .muted{font-size:14px;color:var(--muted)}
+    .price{font-weight:700}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .card .actions{display:flex;gap:10px;margin-top:10px}
+    .section{padding:64px 0}
+    .divider{border-top:1px solid var(--border)}
+    footer{padding:48px 0;color:#6b7280;font-size:12px;text-align:center}
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.4);backdrop-filter:blur(3px);padding:16px;z-index:50}
+    .modal.open{display:flex}
+    .sheet{width:100%;max-width:640px;background:#fff;border:1px solid var(--border);border-radius:22px;box-shadow:0 12px 30px rgba(0,0,0,.12);overflow:hidden}
+    .sheet .hd{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--border)}
+    .sheet .ct{padding:16px}
+    .qty{width:90px;padding:10px;border:1px solid var(--border);border-radius:12px}
+    .thumb{width:112px;height:112px;border-radius:16px;border:1px solid var(--border);object-fit:cover}
+    .links{display:flex;gap:10px;margin-top:12px}
+    .pill{padding:6px 10px;border-radius:10px;border:1px solid var(--border);font-size:12px}
+    .kicker{color:#6b7280;font-size:14px}
+    .list{display:grid;gap:8px}
+  </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZ9CEDKRNL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WZ9CEDKRNL');
+</script>
+</head>
+<body>
+<header class="sticky">
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo">נ</div>
+      <div id="brandName" style="font-weight:600">תמונות נברא</div>
+    </div>
+    <nav id="topNav" style="display:flex;gap:18px;font-size:14px;color:#4b5563"></nav>
+    <div class="lang">
+      <a href="#" id="heBtn" class="active">עברית</a>
+      <a href="#" id="enBtn">English</a>
+      <a class="btn" id="browseBtn" href="#shop"></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 id="heroTitle">תמונות דקורטיביות</h1>
+      <p id="heroSubtitle" style="margin-top:14px">יצירות אומנות תלת מימדיות •עיצוב לפי בקשה •עבודת יד •. כל יצירה מיוצרת בבאר שבע.</p>
+      <div style="display:flex;gap:10px;margin-top:20px">
+        <a class="btn" id="ctaShop" href="#shop"></a>
+        <a class="btn outline" id="ctaAbout" href="#about"></a>
+      </div>
+    </div>
+    <div>
+      <img src="./img/IMG_4343.jpeg" alt="Hero">
+    </div>
+  </div>
+</section>
+
+<section id="shop" class="section">
+  <div class="container">
+    <div class="row" style="align-items:end;margin-bottom:14px">
+      <div>
+        <h2 id="shopTitle">עבודות זמינות</h2>
+        <div class="kicker" id="shopSubtitle">סדרות קטנות. אם זה כאן – זה במלאי.</div>
+      </div>
+      <div class="muted" id="shopRight">גדלים בהתאמה אישית לפי בקשה</div>
+    </div>
+    <div id="grid" class="grid"></div>
+  </div>
+</section>
+
+<section id="about" class="section divider">
+  <div class="container" style="display:grid;gap:20px;grid-template-columns:1fr;align-items:start">
+    <div>
+      <h2 id="aboutTitle">מיוצר לאט, בכוונה</h2>
+      <p id="aboutText" style="margin-top:10px"></p>
+    </div>
+    <div class="list" id="aboutBullets"></div>
+  </div>
+</section>
+
+<section id="faq" class="section divider">
+  <div class="container">
+    <h2 id="faqTitle">שאלות נפוצות</h2>
+    <div class="grid" style="margin-top:18px" id="faqGrid"></div>
+  </div>
+</section>
+
+<section id="contact" class="section divider">
+  <div class="container" style="border:1px solid var(--border);padding:24px;border-radius:22px;background:#fafafa">
+    <h2 id="contactTitle">דברו איתנו / הזמנה</h2>
+    <p class="kicker" id="contactSubtitle">התגובה המהירה ביותר בוואטסאפ. אפשר ג</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+    <a class="btn" id="waBtn" target="_blank" rel="noreferrer">WhatsApp</a>
+    <a class="btn outline" id="mailBtn">Email</a>
+    <a class="btn outline" id="waChannelBtn" target="_blank" rel="noreferrer">WhatsApp Channel</a>
+    <a class="btn outline" id="tiktokBtn" target="_blank" rel="noreferrer">TikTok</a>
+ </div>
+
+  </div>
+  <footer>© <span id="year"></span> <span id="brandNameFooter">תמונות נברא</span>. כל הזכויות שמורות.</footer>
+</section>
+
+<!-- Order Modal -->
+<div id="modal" class="modal" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <div class="hd">
+      <div class="title" id="orderTitle">הזמנת פריט</div>
+      <button id="close" class="btn outline" style="padding:6px 10px" data-i18n="close">סגור</button>
+    </div>
+    <div class="ct">
+      <div style="display:flex;gap:16px;align-items:center">
+        <img id="mImg" class="thumb" alt="thumb" />
+        <div style="flex:1">
+          <div class="title" id="mTitle">Title</div>
+          <div class="muted" id="mSize">Size</div>
+          <div class="price" id="mPrice">₪0</div>
+        </div>
+      </div>
+      <label class="muted" id="qtyLabel" style="display:block;margin-top:14px">כמות</label>
+      <input id="qty" class="qty" type="number" min="1" value="1" />
+      <div class="kicker" id="orderNote" style="margin-top:10px"></div>
+      <div class="links">
+        <a class="btn" id="waGo" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="btn outline" id="mailGo">Email</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =====================
+// SHOP DETAILS
+// =====================
+const SHOP = {
+  name: { he: "תמונות נברא", en: "Nivra Studio" },
+  currency: "₪",
+  whatsapp: "+972534205828", // update
+  email: "nivra.art.studio@gmail.com",
+  city: { he: "באר שבע, ישראל", en: "Be'er Sheva, Israel" },
+  whatsappChannel: "https://whatsapp.com/channel/0029Vb6ErdK6LwHbsyE1jZ0S",
+  tiktok: "https://www.tiktok.com/@nivra0703"
+
+};
+
+// =====================
+// TRANSLATIONS
+// =====================
+const I18N = {
+  he: {
+    brandShort: "תמונות נברא",
+    nav: ["חנות","אודות","שאלות","צור קשר"],
+    browse: "עיון",
+    heroTitle: "תמונות דקורטיביות",
+    heroSubtitle: "יצירות אומנות תלת מימדיות •עיצוב לפי בקשה •עבודת יד •. כל יצירה מיוצרת ב" + SHOP.city.he + ".",
+    ctaShop: "צפו באוסף",
+    ctaAbout: "ראו איך זה עשוי",
+    shopTitle: "עבודות זמינות",
+    shopSubtitle: "סדרות קטנות. אם זה כאן – זה במלאי.",
+    shopRight: "גדלים בהתאמה אישית לפי בקשה",
+    aboutTitle: "מיוצר לאט, בכוונה",
+    aboutText: "אני מעצבת תבליטים גיאומטריים, מדפיסה בסדרות קטנות, ואז משלימה ביד לגימור רך. החומרים נבחרים ליציבות וברק עדין. אי‑שלמויות הן חלק מהקסם.",
+    aboutBullets: [
+      "• לכות ארכיוניות; גימור סאטן או מט",
+      "• חתימה ומיספור במהדורות עם תעודה",
+      "• איסוף מקומי ב" + SHOP.city.he + "; משלוח לפי בקשה"
+    ],
+    faqTitle: "שאלות נפוצות",
+    faq: [
+      {q:"איך משלמים?", a:"מאשרים הזמנה בווטסאפ או במייל. אשלח סיכום חיוב וקישור לתשלום (ביט/פייבוקס/העברה/מזומן באיסוף)."},
+      {q:"איסוף ומשלוח", a:"איסוף חינם ב" + SHOP.city.he + ". משלוח בארץ בעלות לפי משקל ואריזה ידידותית לשימוש חוזר."},
+      {q:"מידות וצבעים בהתאמה", a:"כן. רוב העיצובים ניתנים להגדלה/הקטנה. זמן אספקה 5–10 ימים לפי העומס."},
+      {q:"החזרות", a:"אם משהו הגיע פגום—צרו קשר תוך 7 ימים לתיקון או החלפה."}
+    ],
+    contactTitle: "דברו איתנו / הזמנה",
+    contactSubtitle: "התגובה המהירה ביותר בוואטסאפ. אפשר גם במייל.",
+    orderTitle: "הזמנת פריט",
+    close: "סגור",
+    qty: "כמות",
+    orderNote: "אין תשלום אונליין כרגע — מאשרים בוואטסאפ או מייל. נחזור עם סכום סופי, איסוף/משלוח ולוחות זמנים.",
+    orderBtn: "הזמנה",
+    viewBtn: "תצוגה"
+  },
+  en: {
+    brandShort: "Nivra Studio",
+    nav: ["Shop","About","FAQ","Contact"],
+    browse: "Browse",
+    heroTitle: "Quiet objects for bright rooms",
+    heroSubtitle: "Minimal prints • Quiet light • Hand‑finished. Each piece is made in " + SHOP.city.en + ".",
+    ctaShop: "Shop the collection",
+    ctaAbout: "See how it’s made",
+    shopTitle: "Available works",
+    shopSubtitle: "Small batches. If it’s here, it’s in stock.",
+    shopRight: "Custom sizes on request",
+    aboutTitle: "Made slowly, on purpose",
+    aboutText: "I design geometric reliefs, print in small batches, then hand‑finish each piece for a soft glow. Materials are chosen for stability and low sheen. Imperfections are part of the charm.",
+    aboutBullets: [
+      "• Archival varnishes; satin or matte finishes",
+      "• Signed & numbered editions with certificate",
+      "• Local pickup in " + SHOP.city.en + "; shipping on request"
+    ],
+    faqTitle: "FAQ",
+    faq: [
+      {q:"How do I pay?", a:"Start via WhatsApp or Email. I’ll confirm total and send an invoice or payment link (Bit/PayBox/transfer/cash on pickup)."},
+      {q:"Pickup & shipping", a:"Free local pickup in " + SHOP.city.en + ". Israel shipping available at cost with reuse‑friendly packaging."},
+      {q:"Custom sizes / colors", a:"Yes. Most designs can scale. Lead time 5–10 days depending on queue."},
+      {q:"Returns", a:"If something arrives damaged, contact me within 7 days for a fix or replacement."}
+    ],
+    contactTitle: "Say hello / place an order",
+    contactSubtitle: "Fastest reply on WhatsApp. Email also welcome.",
+    orderTitle: "Order item",
+    close: "Close",
+    qty: "Quantity",
+    orderNote: "No online payment yet — confirm via WhatsApp or Email. I’ll reply with total, pickup/shipping, and timeline.",
+    orderBtn: "Order",
+    viewBtn: "View"
+  }
+};
+
+// =====================
+// CATALOG (bilingual)
+// =====================
+const CATALOG = [
+  {
+    id: "a01",
+    title: {he: "הרב עובדיה יוסף", en: "Maran Ovadia Yosef"},
+    price: 50,
+    size: "24.3×24.2×0.4 cm",
+    tags: {he:["רבנים","דיוקן","דקורציה"], en:["Decoration","Portrait","Rabbi"]},
+    image: "./img/IMG_4348.jpeg",
+    description: {
+      he: "תמונת הרב עובדיה יוסף לקיר-מיוצר מ PETG חזק ועמיד, מביא חמימות רוחנית ומעורר השראה לבית או לחדר הלימוד",
+      en: "A carefully drawn and 3D-printed silhouette of a revered rabbi, made from strong, long-lasting PETG to bring spiritual warmth and timeless grace to your home or study."
+    }
+  },
+  {
+    id: "a02",
+    title: {he: "חמישה רבנים בעבודת יד", en: "Five Rabbi"},
+    price: 400,
+    size: "70×50 cm",
+    tags: {he:["ברכה","מסורת","קנבס"], en:["Canvas","Tradition","Blessing"]},
+    image: "./img/IMG_4343.jpeg",
+    description: {
+      he: "רבי שמעון בר יוחאי, רבי עובדיה יוסף, הבבא סאלי, הרבי מלובביץ, הרב יצחק כדורי",
+      en: "Elegant black-and-white wall art of five distinguished rabbis, hand-drawn and 3D-printed in durable PETG on a premium canvas board with an ornate elegant frame—a refined spiritual centerpiece for any home or study."
+    }
+  },
+  {
+    id: "a03",
+    title: {he: "רבי נחמן ", en: "Rabbi Nachman of Breslev"},
+    price: 60,
+    size: "25.2×20.2×5 cm",
+    tags: {he:["אמונה","שמחה","נחמן"], en:["Nachman","Joy","Faith"]},
+    image: "./img/IMG_4352.jpeg",
+    description: {
+      he: "תמונת הרבי נחמן ממוסגרת-מיוצר מ PETG חזק ועמיד, מביא חמימות רוחנית ושמחה לבית או לחדר הלימוד",
+      en: "Framed portrait of Rabbi Nachman – made of strong and durable PETG, bringing spiritual warmth and joy to any home or study room."
+    }
+  },
+  {
+    id: "a04",
+    title: {he: "שם המוצר החדש", en: "Home Protrait"},
+    price: 100,
+    size: "24×24 cm",
+    tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
+    image: "./img/Couple_24.jpeg",
+    description: {
+      he: "!תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת ",
+      en: "Custom family portraits — a perfect gift for holidays and birthdays!"
+    }
+ },
+  {
+    id: "a05",
+    title: {he: "דיוקן משפחתי במסגרת", en: "Home Protrait in frame"},
+    price: 100,
+    size: "25.2×20.2×5 cm",
+    tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
+    image: "./img/Couple_in_frame.jpeg",
+    description: {
+      he: "!תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת ",
+      en: "Custom family portraits — a perfect gift for holidays and birthdays!"
+    }
+ },
+  {
+    id: "a06",
+    title: {he: "דיוקן משפחתי במסגרת", en: "Home Protrait in frame"},
+    price: 85,
+    size: "20.2×20.2×5 cm",
+    tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
+    image: "./img/Couple_in_frame2.jpg",
+    description: {
+      he: "!תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת ",
+      en: "Custom family portraits — a perfect gift for holidays and birthdays!"
+    }
+  }
+];
+
+// =====================
+// RUNTIME
+// =====================
+let lang = localStorage.getItem('lang') || 'he';
+
+const els = {
+  brandName: document.getElementById('brandName'),
+  brandNameFooter: document.getElementById('brandNameFooter'),
+  topNav: document.getElementById('topNav'),
+  browseBtn: document.getElementById('browseBtn'),
+  heroTitle: document.getElementById('heroTitle'),
+  heroSubtitle: document.getElementById('heroSubtitle'),
+  ctaShop: document.getElementById('ctaShop'),
+  ctaAbout: document.getElementById('ctaAbout'),
+  shopTitle: document.getElementById('shopTitle'),
+  shopSubtitle: document.getElementById('shopSubtitle'),
+  shopRight: document.getElementById('shopRight'),
+  aboutTitle: document.getElementById('aboutTitle'),
+  aboutText: document.getElementById('aboutText'),
+  aboutBullets: document.getElementById('aboutBullets'),
+  faqTitle: document.getElementById('faqTitle'),
+  faqGrid: document.getElementById('faqGrid'),
+  contactTitle: document.getElementById('contactTitle'),
+  contactSubtitle: document.getElementById('contactSubtitle'),
+  //city: document.getElementById('city'),
+  year: document.getElementById('year'),
+  //insta: document.getElementById('insta'),
+  grid: document.getElementById('grid'),
+  modal: document.getElementById('modal'),
+  mImg: document.getElementById('mImg'),
+  mTitle: document.getElementById('mTitle'),
+  mSize: document.getElementById('mSize'),
+  mPrice: document.getElementById('mPrice'),
+  qty: document.getElementById('qty'),
+  waGo: document.getElementById('waGo'),
+  mailGo: document.getElementById('mailGo'),
+  closeBtn: document.getElementById('close'),
+  orderTitle: document.getElementById('orderTitle'),
+  qtyLabel: document.getElementById('qtyLabel'),
+  orderNote: document.getElementById('orderNote'),
+  heBtn: document.getElementById('heBtn'),
+  enBtn: document.getElementById('enBtn'),
+  waBtn: document.getElementById('waBtn'),
+  mailBtn: document.getElementById('mailBtn'),
+};
+
+els.year.textContent = new Date().getFullYear();
+
+function setDir(){
+  const rtl = (lang==='he');
+  document.documentElement.lang = rtl ? 'he' : 'en';
+  document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+}
+
+function renderNav(){
+  els.topNav.innerHTML = '';
+  const labels = I18N[lang].nav;
+  const ids = ['#shop','#about','#faq','#contact'];
+  labels.forEach((label,i)=>{
+    const a = document.createElement('a'); a.href = ids[i]; a.textContent = label; els.topNav.appendChild(a);
+  });
+}
+
+function renderStatic(){
+  const t = I18N[lang];
+  document.title = (lang==='he'? SHOP.name.he : SHOP.name.en) + ' — ' + (lang==='he' ? 'חנות' : 'Shop');
+  els.brandName.textContent = t.brandShort;
+  els.brandNameFooter.textContent = t.brandShort;
+  els.browseBtn.textContent = t.browse;
+  els.heroTitle.textContent = t.heroTitle;
+  els.heroSubtitle.textContent = t.heroSubtitle;
+  els.ctaShop.textContent = t.ctaShop;
+  els.ctaAbout.textContent = t.ctaAbout;
+  els.shopTitle.textContent = t.shopTitle;
+  els.shopSubtitle.textContent = t.shopSubtitle;
+  els.shopRight.textContent = t.shopRight;
+  els.aboutTitle.textContent = t.aboutTitle;
+  els.aboutText.textContent = t.aboutText;
+  els.aboutBullets.innerHTML = t.aboutBullets.map(b=>`<div>${b}</div>`).join('');
+  els.faqTitle.textContent = t.faqTitle;
+  els.faqGrid.innerHTML = t.faq.map(({q,a})=>`<div><div class="title">${q}</div><p>${a}</p></div>`).join('');
+  els.contactTitle.textContent = t.contactTitle;
+  els.contactSubtitle.textContent = t.contactSubtitle;
+  //els.city.textContent = '• ' + (lang==='he' ? SHOP.city.he : SHOP.city.en);
+  //els.insta.textContent = '@' + SHOP.instagram[lang];
+  els.orderTitle.textContent = t.orderTitle;
+  els.closeBtn.textContent = t.close;
+  els.qtyLabel.textContent = t.qty;
+  els.orderNote.textContent = t.orderNote;
+  els.heBtn.classList.toggle('active', lang==='he');
+  els.enBtn.classList.toggle('active', lang==='en');
+}
+
+function currency(n){return `${SHOP.currency}${n}`}
+
+function cardTemplate(item){
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.innerHTML = `
+    <img src="${item.image}" alt="${item.title[lang]}">
+    <div class="body">
+      <div class="row">
+        <div>
+          <div class="title">${item.title[lang]}</div>
+          <div class="muted">${item.size}</div>
+        </div>
+        <div class="price">${currency(item.price)}</div>
+      </div>
+      <p class="muted" style="margin:8px 0 0 0">${item.description[lang]}</p>
+      <div class="tags">${item.tags[lang].map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+      <div class="actions">
+        <a class="btn" data-id="${item.id}">${I18N[lang].orderBtn}</a>
+        <a class="btn outline" href="${item.image}" target="_blank" rel="noreferrer">${I18N[lang].viewBtn}</a>
+      </div>
+    </div>`;
+
+  el.querySelector('.btn').addEventListener('click',()=>openOrder(item));
+  return el;
+}
+
+function renderGrid(){
+  els.grid.innerHTML = '';
+  CATALOG.forEach(item=>els.grid.appendChild(cardTemplate(item)));
+}
+
+function openOrder(item){
+  els.mImg.src = item.image;
+  els.mTitle.textContent = item.title[lang];
+  els.mSize.textContent = item.size;
+  els.mPrice.textContent = currency(item.price);
+  els.qty.value = 1;
+  els.modal.classList.add('open');
+  updateLinks(item);
+}
+
+function closeOrder(){els.modal.classList.remove('open')}
+els.closeBtn.addEventListener('click', closeOrder);
+els.modal.addEventListener('click', (e)=>{ if(e.target===els.modal) closeOrder(); });
+
+function updateLinks(item){
+  const message = encodeURIComponent(
+    (lang==='he' ? `שלום, מעוניין/ת ב"${item.title.he}" (מזהה: ${item.id}).\nכמות: ${els.qty.value}.\nנא לאשר זמינות ואפשרויות איסוף/משלוח. תודה!` :
+     `Hello, I'm interested in "${item.title.en}" (ID: ${item.id}).\nQuantity: ${els.qty.value}.\nPlease confirm availability and pickup/shipping options. Thank you!`)
+  );
+  const wa = `https://wa.me/${SHOP.whatsapp.replace(/\D/g,'')}?text=${message}`;
+  els.waGo.href = wa;
+  els.mailGo.href = `mailto:${SHOP.email}?subject=${encodeURIComponent((lang==='he'?'הזמנה ':'Order ')+item.title[lang])}&body=${message}`;
+}
+els.qty.addEventListener('input', ()=>{
+  const title = els.mTitle.textContent;
+  const item = CATALOG.find(x=>x.title[lang]===title);
+  if(item) updateLinks(item);
+});
+
+// Contact quick buttons
+els.waBtn.href = `https://wa.me/${SHOP.whatsapp.replace(/\D/g,'')}`;
+els.mailBtn.href =
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(SHOP.email)}`;
+els.mailBtn.target = '_blank';
+els.mailBtn.rel = 'noreferrer';
+document.getElementById('waChannelBtn').href = SHOP.whatsappChannel;
+document.getElementById('tiktokBtn').href = SHOP.tiktok;
+
+
+function renderAll(){
+  setDir();
+  renderNav();
+  renderStatic();
+  renderGrid();
+}
+
+els.heBtn.addEventListener('click',(e)=>{e.preventDefault(); lang='he'; localStorage.setItem('lang','he'); renderAll();});
+els.enBtn.addEventListener('click',(e)=>{e.preventDefault(); lang='en'; localStorage.setItem('lang','en'); renderAll();});
+
+renderAll();
+</script>
+</body>
+</html>
