@@ -673,7 +673,7 @@ function renderStatic(){
   els.shopSubtitle.textContent = t.shopSubtitle;
   els.shopRight.textContent = t.shopRight;
   els.aboutTitle.textContent = t.aboutTitle;
-  els.aboutText.textContent = t.aboutText;
+  els.aboutText.innerHTML = t.aboutText;
   els.aboutBullets.innerHTML = t.aboutBullets.map(b=>`<div>${b}</div>`).join('');
   els.faqTitle.textContent = t.faqTitle;
   els.faqGrid.innerHTML = t.faq.map(({q,a})=>`<div><div class="title">${q}</div><p>${a}</p></div>`).join('');
@@ -775,6 +775,7 @@ renderAll();
 </script>
 </body>
 </html>
+
 
 
 
