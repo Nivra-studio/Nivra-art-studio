@@ -52,7 +52,13 @@
     .lang{display:flex;gap:10px;align-items:center;font-size:13px;color:#4b5563}
     .lang a{padding:6px 10px;border-radius:10px;border:1px solid transparent}
     .lang a.active{border-color:var(--border);background:#fff}
-    .hero{border-bottom:1px solid var(--border);background:linear-gradient(#fafafa,#fff)}
+    .hero {
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(
+     rgba(250,250,250,0.85),   /* top color 85% opaque */
+     rgba(255,255,255,0.85)    /* bottom color 85% opaque */
+  );
+}
 	  .hero {
   padding-top: 48px;   /* try 64px if you want even more air */
 }
@@ -802,6 +808,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
