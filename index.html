@@ -222,6 +222,15 @@ header.sticky{ position:sticky; z-index:10 }
 /* Avoid titles hiding behind the sticky header when using # links */
 .section { scroll-margin-top: 90px; }
 
+	  .site-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("./img/background.jpg") center/cover no-repeat;
+  z-index: -1; /* behind everything, including sticky header */
+  background-attachment: fixed; /* subtle parallax feel */
+}
+
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZ9CEDKRNL"></script>
@@ -335,6 +344,7 @@ if (menuBtn && navRoot){
 
 </head>
 <body>
+	<div class="site-bg"></div>
 <header class="sticky">
   <div class="container nav">
     <div class="brand">
@@ -540,7 +550,7 @@ const CATALOG = [
   {
     id: "a01",
     title: {he: "הרב עובדיה יוסף", en: "Maran Ovadia Yosef"},
-    price: 50,
+    price: 60,
     size: "24.3×24.2×0.4 cm",
     tags: {he:["רבנים","דיוקן","דקורציה"], en:["Decoration","Portrait","Rabbi"]},
     image: "./img/IMG_4348.jpeg",
@@ -792,6 +802,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
