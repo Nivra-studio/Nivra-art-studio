@@ -236,6 +236,14 @@ header.sticky{ position:sticky; z-index:10 }
   z-index: -1; /* behind everything, including sticky header */
   background-attachment: fixed; /* subtle parallax feel */
 }
+/* Give all main sections a soft translucent panel so text stays readable */
+.section {
+  background: rgba(255,255,255,0.8);  /* 80% opaque white */
+  backdrop-filter: blur(4px);         /* optional: gentle glass-like blur */
+  border-radius: 16px;                /* optional: soft rounded corners */
+  padding: 64px 0;                    /* adjust to match your spacing */
+  border-top: 1px solid rgba(0,0,0,0.05); /* optional subtle divider */
+}
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -808,6 +816,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
