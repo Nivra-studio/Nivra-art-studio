@@ -219,6 +219,8 @@ header.sticky{ position:sticky; z-index:10 }
 
   .nav.open #topNav{ display: flex; } /* show when open */
 }
+/* Avoid titles hiding behind the sticky header when using # links */
+.section { scroll-margin-top: 90px; }
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -784,6 +786,7 @@ renderAll();
 </script>
 </body>
 </html>
+
 
 
 
