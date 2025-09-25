@@ -401,9 +401,28 @@ if (menuBtn && navRoot){
   </div>
 </section>
 	<!-- New parallax showcase section -->
-<section class="parallax">
-   … parallax layers …
+<section class="parallax" aria-label="decorative parallax">
+  <!-- back layer -->
+  <div class="parallax__layer" data-speed="0.15">
+    <img src="./img/layer-back.png" alt="">
+  </div>
+
+  <!-- mid layer -->
+  <div class="parallax__layer" data-speed="0.35">
+    <img src="./img/layer-mid.png" alt="">
+  </div>
+
+  <!-- front layer -->
+  <div class="parallax__layer" data-speed="0.65">
+    <img src="./img/layer-front.png" alt="">
+  </div>
+
+  <!-- optional content on top -->
+  <div class="parallax__content">
+    <p class="muted">Scroll ↓</p>
+  </div>
 </section>
+
 
 
 <section id="shop" class="section">
@@ -854,6 +873,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
