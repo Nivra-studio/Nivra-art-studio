@@ -718,6 +718,39 @@ const CATALOG = [
     }
   }
 ];
+ /* --- Product & FAQ JSON-LD --- */
+  (function(){
+    try{
+      const prods = (CATALOG||[]).map(p=>({
+        "@context":"https://schema.org",
+        "@type":"Product",
+        "name": p.title[lang],
+        "image": location.origin + p.image.replace(/^\./,''),
+        "description": p.description[lang],
+        "brand": {"@type":"Brand", "name": (lang==='he' ? "תמונות נברא" : "Nivra Studio")},
+        "offers": {
+          "@type":"Offer",
+          "priceCurrency": "ILS",
+          "price": String(p.price),
+          "availability": "https://schema.org/InStock",
+          "url": location.href
+        }
+      }));
+      const faq = {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity": I18N[lang].faq.map(q=>({
+          "@type":"Question",
+          "name": q.q,
+          "acceptedAnswer": {"@type":"Answer","text": q.a}
+        }))
+      };
+      const n = document.createElement('script');
+      n.type = 'application/ld+json';
+      n.textContent = JSON.stringify([faq, ...prods]);
+      document.head.appendChild(n);
+    }catch(e){}
+  })();
 
 // =====================
 // RUNTIME
@@ -946,6 +979,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
