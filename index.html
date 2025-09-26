@@ -244,18 +244,20 @@ header.sticky{ position:sticky; z-index:10 }
   padding: 64px 0;
 }
 
-/* === Star of David cursor (desktop) === */
+/* Replace your previous --cursor-star + cursor rule with this */
 :root{
   --cursor-star: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>\
-  <path d='M12 2l4 7H8l4-7zM12 22l-4-7h8l-4 7z'/>\
-  <path d='M2 8h7l-3.5 6L2 8zm20 0h-7l3.5 6L22 8z'/>\
-</svg>") 12 12, auto;
+  <path d='M12 3 L21 19 H3 Z'/>\
+  <path d='M12 21 L3 5 H21 Z'/>\
+</svg>") 16 16, auto;  /* 16 16 = hotspot in the center */
 }
 
-@media (pointer: fine){       /* show custom cursor only when there is a mouse */
+/* Show custom cursor only on devices with a mouse */
+@media (pointer: fine){
   body{ cursor: var(--cursor-star); }
 }
+
 
 /* === Tap/click burst === */
 .tap-burst{
@@ -890,6 +892,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
