@@ -245,7 +245,7 @@ header.sticky{ position:sticky; z-index:10 }
 }
 
 /* Replace your previous --cursor-star + cursor rule with this */
-:root {
+/*:root {
   --cursor-star: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none' stroke='%23111827' stroke-width='2'>\
   <polygon points='16 4 28 24 4 24'/>\
@@ -257,7 +257,23 @@ header.sticky{ position:sticky; z-index:10 }
   body {
     cursor: var(--cursor-star);
   }
+}*/
+	  :root {
+  /* Use your uploaded PNG as the cursor */
+  --cursor-custom: url("./img/mouse.png") 8 8, auto;
 }
+
+@media (pointer: fine) {
+  body {
+    cursor: var(--cursor-custom);
+  }
+}
+
+/* Keep hand pointer for clickable things */
+a, button, .btn, .card .actions .btn {
+  cursor: pointer;
+}
+
 
 
 
@@ -894,6 +910,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
