@@ -244,6 +244,56 @@ header.sticky{ position:sticky; z-index:10 }
   padding: 64px 0;
 }
 
+/* === Star of David cursor (desktop) === */
+:root{
+  --cursor-star: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>\
+  <path d='M12 2l4 7H8l4-7zM12 22l-4-7h8l-4 7z'/>\
+  <path d='M2 8h7l-3.5 6L2 8zm20 0h-7l3.5 6L22 8z'/>\
+</svg>") 12 12, auto;
+}
+
+@media (pointer: fine){       /* show custom cursor only when there is a mouse */
+  body{ cursor: var(--cursor-star); }
+}
+
+/* === Tap/click burst === */
+.tap-burst{
+  position: fixed;
+  left: 0; top: 0;
+  width: 28px; height: 28px;
+  margin-left: -14px;  /* center on pointer */
+  margin-top:  -14px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: scale(.6);
+  --c: #111827;
+}
+.tap-burst::before, .tap-burst::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    conic-gradient(from 0deg at 50% 50%, var(--c) 0 60deg, #0000 0) 50%/100% 100% no-repeat;
+  -webkit-mask:
+    radial-gradient(circle 11px at 50% 50%, #0000 10px, #000 10px); /* cutout center */
+  mask:
+    radial-gradient(circle 11px at 50% 50%, #0000 10px, #000 10px);
+}
+.tap-burst::after{
+  transform: rotate(60deg);
+}
+
+@keyframes pop {
+  0%   { opacity:.85; transform: scale(.6);   filter: blur(0); }
+  70%  { opacity:.45; transform: scale(1.05); filter: blur(0.2px); }
+  100% { opacity:0;   transform: scale(1.4);  filter: blur(.6px); }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .tap-burst{ display:none; }
+}
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -812,10 +862,35 @@ els.enBtn.addEventListener('click',(e)=>{e.preventDefault(); lang='en'; localSto
 
 renderAll();
 </script>
+<script>
+/* Create a little star-burst on any click/tap */
+(function(){
+  function burst(x, y){
+    const el = document.createElement('div');
+    el.className = 'tap-burst';
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    document.body.appendChild(el);
+    // pick a subtle color from your palette if you want
+    el.style.setProperty('--c', getComputedStyle(document.documentElement).getPropertyValue('--text') || '#111827');
+    // animate & remove
+    el.style.animation = 'pop 420ms ease-out forwards';
+    el.addEventListener('animationend', ()=> el.remove(), {once:true});
+  }
+
+  // Works for mouse and touch (phones)
+  window.addEventListener('pointerdown', (e)=>{
+    // ignore right-clicks
+    if (e.button && e.button !== 0) return;
+    burst(e.clientX, e.clientY);
+  }, {passive:true});
+})();
+</script>
 
 
 </body>
 </html>
+
 
 
 
