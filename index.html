@@ -256,6 +256,30 @@ header.sticky{ position:sticky; z-index:10 }
   border-radius: 0;                     /* 🚫 remove rounded corners */
   padding: 64px 0;
 }
+/* Make the flag visible on phones */
+@media (max-width: 600px){
+  /* iOS/Android: avoid fixed backgrounds */
+  .site-bg{
+    background-attachment: scroll;
+    background-position: center top;
+    /* optional: a tiny boost so colors show through */
+    filter: contrast(1.05) saturate(1.05);
+  }
+
+  /* Lighten the white panels on mobile so the flag shows */
+  .section{
+    background: rgba(255,255,255,0.6); /* was 0.8 */
+    backdrop-filter: none;              /* turn off blur on mobile */
+  }
+
+  /* So the hero gradient doesn’t wash it out */
+  .hero{
+    background: linear-gradient(
+      rgba(250,250,250,0.7),
+      rgba(255,255,255,0.7)
+    );
+  }
+}
 
 /* Replace your previous --cursor-star + cursor rule with this */
 /*:root {
@@ -990,6 +1014,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
