@@ -298,39 +298,29 @@ a, button, .btn, .card .actions .btn, .card .btn {
   cursor:url("./img/mouse.png") 16 16, pointer;
 }
 
-/* === Tap/click burst === */
-.tap-burst{
-  position: fixed;
-  left: 0; top: 0;
-  width: 28px; height: 28px;
-  margin-left: -14px;  /* center on pointer */
-  margin-top:  -14px;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: scale(.6);
-  --c: #111827;
-}
 /* Click burst shows the word "חי" */
 .tap-burst{
   position: fixed;
   left: 0; top: 0;
-  transform: translate(-50%, -50%) scale(.6); /* center on click */
+  transform: translate(-50%, -50%) scale(.6); /* center at click point */
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  font-size: 28px;         /* size of the word */
+  font-size: 36px;
   font-weight: 800;
   line-height: 1;
-  color: var(--text);       /* #111827 by your theme */
-  font-family: Arial, system-ui, sans-serif; /* make sure Hebrew glyphs exist */
+  color: var(--text);
+  font-family: Arial, system-ui, sans-serif;
   will-change: transform, opacity, filter;
+
+  /* ✅ THIS makes it actually appear and fade out */
+  animation: pop 420ms ease-out forwards;
 }
 
 @keyframes pop{
   0%   { opacity:.9;  transform: translate(-50%, -50%) scale(.7);   filter: blur(0); }
-  70%  { opacity:.45; transform: translate(-50%, -50%) scale(1.1); filter: blur(.2px); }
-  100% { opacity:0;   transform: translate(-50%, -50%) scale(1.6); filter: blur(.6px); }
+  70%  { opacity:.45; transform: translate(-50%, -50%) scale(1.1);   filter: blur(.2px); }
+  100% { opacity:0;   transform: translate(-50%, -50%) scale(1.6);   filter: blur(.6px); }
 }
 
 
@@ -1015,6 +1005,7 @@ function burst(x, y){
 
 </body>
 </html>
+
 
 
 
