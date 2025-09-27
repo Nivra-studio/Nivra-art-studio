@@ -281,22 +281,6 @@ header.sticky{ position:sticky; z-index:10 }
   }
 }
 
-	  :root {
-  /* Use your uploaded PNG as the cursor */
-  --cursor: url("./img/mouse.cur"), url("./img/mouse.png?v=2") 16 16, auto;
-}
-
-@media (pointer: fine) {
-  body {
-    cursor: var(--cursor);
-  }
-}
-
-
-/* Keep hand pointer for clickable things */
-a, button, .btn, .card .actions .btn, .card .btn {
-  cursor:url("./img/mouse.png") 16 16, pointer;
-}
 
 /* Click burst shows the word "חי" */
 .tap-burst{
@@ -324,15 +308,6 @@ a, button, .btn, .card .actions .btn, .card .btn {
 }
 
 
-/* Motion safety */
-html, body {
-  cursor: url("./img/mouse.cur"), url("./img/mouse.png") 16 16, auto !important;
-}
-
-a, button, .btn, .card .actions .btn, .card .btn {
-  cursor: url("./img/mouse.cur"), url("./img/mouse.png") 16 16, pointer !important;
-}
-
 .hero p {
   font-size: 20px;
   font-weight: 600;
@@ -344,6 +319,19 @@ a, button, .btn, .card .actions .btn, .card .btn {
   border-radius: 8px;
   display: inline-block;
 }
+	  /* ONE source of truth for the cursor */
+html, body {
+  cursor: url("./img/mouse.cur"),
+          url("./img/mouse.png") 16 16,
+          auto !important;
+}
+
+a, button, .btn, .card .actions .btn, .card .btn {
+  cursor: url("./img/mouse.cur"),
+          url("./img/mouse.png") 16 16,
+          pointer !important;
+}
+
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -1001,9 +989,18 @@ function burst(x, y){
     }, {passive:true});
   })();
 </script>
+<!-- Temporary overlay to prove the cursor loads -->
+<div id="cursorTest"
+     style="position:fixed;inset:0;z-index:9999999;pointer-events:none;
+            cursor:url('./img/mouse.cur'), url('./img/mouse.png') 16 16, auto;">
+</div>
+<script>
+  setTimeout(()=>document.getElementById('cursorTest')?.remove(), 4000);
+</script>
 
 </body>
 </html>
+
 
 
 
