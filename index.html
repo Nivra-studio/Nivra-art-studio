@@ -322,13 +322,13 @@ header.sticky{ position:sticky; z-index:10 }
 	  /* ONE source of truth for the cursor */
 html, body {
   cursor: url("./img/mouse.cur"),
-          url("./img/mouse.png") 16 16,
+          url("./img/mouse.png") 32 32,
           auto !important;
 }
 
 a, button, .btn, .card .actions .btn, .card .btn {
   cursor: url("./img/mouse.cur"),
-          url("./img/mouse.png") 16 16,
+          url("./img/mouse.png") 32 32,
           pointer !important;
 }
 
@@ -992,7 +992,7 @@ function burst(x, y){
 <!-- Temporary overlay to prove the cursor loads -->
 <div id="cursorTest"
      style="position:fixed;inset:0;z-index:9999999;pointer-events:none;
-            cursor:url('./img/mouse.cur'), url('./img/mouse.png') 16 16, auto;">
+            cursor:url('./img/mouse.cur'), url('./img/mouse.png') 32 32, auto;">
 </div>
 <script>
   setTimeout(()=>document.getElementById('cursorTest')?.remove(), 4000);
@@ -1000,6 +1000,7 @@ function burst(x, y){
 
 </body>
 </html>
+
 
 
 
