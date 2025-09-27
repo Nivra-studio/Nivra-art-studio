@@ -311,16 +311,19 @@ a, button, .btn, .card .actions .btn, .card .btn {
   transform: scale(.6);
   --c: #111827;
 }
-.tap-burst::before, .tap-burst::after{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    conic-gradient(from 0deg at 50% 50%, var(--c) 0 60deg, #0000 0) 50%/100% 100% no-repeat;
-  -webkit-mask:
-    radial-gradient(circle 11px at 50% 50%, #0000 10px, #000 10px); /* cutout center */
-  mask:
-    radial-gradient(circle 11px at 50% 50%, #0000 10px, #000 10px);
+.tap-burst::before,
+.tap-burst::after {
+  content: "חי";               /* Hebrew letters instead of shapes */
+  font-size: 28px;             /* adjust size as you like */
+  font-weight: 700;
+  color: var(--c);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .tap-burst::after{
   transform: rotate(60deg);
 }
@@ -1004,6 +1007,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
