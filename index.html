@@ -311,18 +311,28 @@ a, button, .btn, .card .actions .btn, .card .btn {
   transform: scale(.6);
   --c: #111827;
 }
-.tap-burst::before,
-.tap-burst::after {
-  content: "חי";               /* Hebrew letters instead of shapes */
-  font-size: 28px;             /* adjust size as you like */
-  font-weight: 700;
-  color: var(--c);
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Click burst shows the word "חי" */
+.tap-burst{
+  position: fixed;
+  left: 0; top: 0;
+  transform: translate(-50%, -50%) scale(.6); /* center on click */
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  font-size: 28px;         /* size of the word */
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);       /* #111827 by your theme */
+  font-family: Arial, system-ui, sans-serif; /* make sure Hebrew glyphs exist */
+  will-change: transform, opacity, filter;
 }
+
+@keyframes pop{
+  0%   { opacity:.9;  transform: translate(-50%, -50%) scale(.7);   filter: blur(0); }
+  70%  { opacity:.45; transform: translate(-50%, -50%) scale(1.1); filter: blur(.2px); }
+  100% { opacity:0;   transform: translate(-50%, -50%) scale(1.6); filter: blur(.6px); }
+}
+
 
 .tap-burst::after{
   transform: rotate(60deg);
@@ -960,18 +970,16 @@ renderAll();
 <script>
 /* Create a little star-burst on any click/tap */
 (function(){
-  function burst(x, y){
-    const el = document.createElement('div');
-    el.className = 'tap-burst';
-    el.style.left = x + 'px';
-    el.style.top  = y + 'px';
-    document.body.appendChild(el);
-    // pick a subtle color from your palette if you want
-    el.style.setProperty('--c', getComputedStyle(document.documentElement).getPropertyValue('--text') || '#111827');
-    // animate & remove
-    el.style.animation = 'pop 420ms ease-out forwards';
-    el.addEventListener('animationend', ()=> el.remove(), {once:true});
-  }
+function burst(x, y){
+  const el = document.createElement('div');
+  el.className = 'tap-burst';
+  el.textContent = 'חי';            // ✅ show the word itself
+  el.style.left = x + 'px';
+  el.style.top  = y + 'px';
+  document.body.appendChild(el);
+  el.addEventListener('animationend', ()=> el.remove(), {once:true});
+}
+
 
   // Works for mouse and touch (phones)
   window.addEventListener('pointerdown', (e)=>{
@@ -1007,6 +1015,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
