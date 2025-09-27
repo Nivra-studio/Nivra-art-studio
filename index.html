@@ -470,7 +470,11 @@ if (menuBtn && navRoot){
       </div>
     </div>
     <div>
-      <img src="./img/IMG_4343.jpeg" alt="Hero">
+      <picture>
+  <source srcset="./img/IMG_4343.webp" type="image/webp">
+  <img src="./img/IMG_4343.jpeg" alt="Hero">
+</picture>
+
     </div>
   </div>
 </section>
@@ -655,7 +659,7 @@ const CATALOG = [
     price: 60,
     size: "24.3×24.2×0.4 cm",
     tags: {he:["רבנים","דיוקן","דקורציה"], en:["Decoration","Portrait","Rabbi"]},
-    image: "./img/IMG_4348.jpeg",
+    image: "./img/IMG_4348.webp",
     description: {
       he: "תמונת הרב עובדיה יוסף לקיר-מיוצר מ PETG חזק ועמיד, מביא חמימות רוחנית ומעורר השראה לבית או לחדר הלימוד",
       en: "A carefully drawn and 3D-printed silhouette of a revered rabbi, made from strong, long-lasting PETG to bring spiritual warmth and timeless grace to your home or study."
@@ -667,7 +671,7 @@ const CATALOG = [
     price: 400,
     size: "70×50 cm",
     tags: {he:["ברכה","מסורת","קנבס"], en:["Canvas","Tradition","Blessing"]},
-    image: "./img/IMG_4343.jpeg",
+    image: "./img/IMG_4343.webp",
     description: {
       he: "רבי שמעון בר יוחאי, רבי עובדיה יוסף, הבבא סאלי, הרבי מלובביץ, הרב יצחק כדורי",
       en: "Elegant black-and-white wall art of five distinguished rabbis, hand-drawn and 3D-printed in durable PETG on a premium canvas board with an ornate elegant frame—a refined spiritual centerpiece for any home or study."
@@ -679,7 +683,7 @@ const CATALOG = [
     price: 60,
     size: "25.2×20.2×5 cm",
     tags: {he:["אמונה","שמחה","נחמן"], en:["Nachman","Joy","Faith"]},
-    image: "./img/IMG_4352.jpeg",
+    image: "./img/IMG_4352.webp",
     description: {
       he: "תמונת הרבי נחמן ממוסגרת-מיוצר מ PETG חזק ועמיד, מביא חמימות רוחנית ושמחה לבית או לחדר הלימוד",
       en: "Framed portrait of Rabbi Nachman – made of strong and durable PETG, bringing spiritual warmth and joy to any home or study room."
@@ -691,7 +695,7 @@ const CATALOG = [
     price: 100,
     size: "24×24 cm",
     tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
-    image: "./img/Couple_24.jpeg",
+    image: "./img/Couple_24.webp",
     description: {
       he: "תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת "+"!",
       en: "Custom family portraits — a perfect gift for holidays and birthdays!"
@@ -703,7 +707,7 @@ const CATALOG = [
     price: 100,
     size: "25.2×20.2×5 cm",
     tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
-    image: "./img/Couple_in_frame.jpeg",
+    image: "./img/Couple_in_frame.webp",
     description: {
       he: "תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת "+"!",
       en: "Custom family portraits — a perfect gift for holidays and birthdays!"
@@ -715,7 +719,7 @@ const CATALOG = [
     price: 85,
     size: "20.2×20.2×5 cm",
     tags: {he:["מקורי","עיצוב","מיוחד"], en:["Original","Design","Special"]},
-    image: "./img/Couple_in_frame2.jpg",
+    image: "./img/Couple_in_frame2.webp",
     description: {
       he: "תמונות למשפחה לפי הזמנה, מתנה מעולה לחגים וימי הולדת "+"!",
       en: "Custom family portraits — a perfect gift for holidays and birthdays!"
@@ -855,7 +859,10 @@ function cardTemplate(item){
   const el = document.createElement('div');
   el.className = 'card';
   el.innerHTML = `
+    <picture>
+    <source srcset="${item.image.replace('.jpeg','.webp').replace('.jpg','.webp')}" type="image/webp">
     <img src="${item.image}" alt="${item.title[lang]}" loading="lazy" decoding="async">
+  </picture>
     <div class="body">
       <div class="row">
         <div>
@@ -983,6 +990,7 @@ renderAll();
 
 </body>
 </html>
+
 
 
 
