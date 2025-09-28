@@ -590,7 +590,7 @@ const I18N = {
      aboutTitle: "הסיפור שלנו",
 aboutText: "זה התחיל מרעיון פשוט: <strong>להפוך ציור למשהו שאפשר לגעת בו ולשמור</strong>.<br><br>כל דיוקן מתחיל בקו ידני, ואז הופך לפריט תלת־ממד מודפס מ-PETG ומגומר בעדינות. מה שהתחיל כמתנות למשפחה וחברים הפך לסטודיו שבו <strong>זיכרון פוגש עיצוב</strong>—מקום שבו אפשר להביא דיוקן של אדם אהוב, יום מיוחד או דמות רבנית נצחית אל הבית כיצירת אמנות אלגנטית.<br><br>כל יצירה נוצרת אחת-אחת, כדי שכל תמונה על הקיר תספר <strong>סיפור ייחודי שנשאר לשנים</strong>.",
 	  aboutBullets: [
-  "• ציור ידני → הדפסה בתלת־ממד → גימור ידני",
+  "• ציור ידני ← הדפסה בתלת־ממד ← גימור ידני",
   "• PETG חזק לעמידות ארוכת טווח",
   "• אפשרות להתאמה אישית ולדיוקנאות בהזמנה"
 ],
@@ -598,7 +598,7 @@ aboutText: "זה התחיל מרעיון פשוט: <strong>להפוך ציור �
     faqTitle: "שאלות נפוצות",
     faq: [
       {q:"איך משלמים?", a:"מזמינים בווצאפ או במייל"+"."},
-      {q:"איסוף ומשלוח", a:"איסוף חינם ב" + SHOP.city.he + ". משלוח בארץ בעלות לפי משקל ואריזה ידידותית לשימוש חוזר."},
+      {q:"איסוף ומשלוח", a:"איסוף חינם ב" /*+ SHOP.city.he*/ + ". משלוח בארץ בעלות לפי משקל ואריזה ידידותית לשימוש חוזר."},
       {q:"מידות וצבעים בהתאמה", a:"כן. רוב העיצובים ניתנים להגדלה/הקטנה. זמן אספקה 5–10 ימים לפי העומס."},
       {q:"החזרות", a:"אם משהו הגיע פגום—צרו קשר תוך 7 ימים לתיקון או החלפה."}
     ],
@@ -632,7 +632,7 @@ aboutText: "זה התחיל מרעיון פשוט: <strong>להפוך ציור �
     faqTitle: "FAQ",
     faq: [
       {q:"How do I pay?", a:"Start via WhatsApp or Email."},
-      {q:"Pickup & shipping", a:"Free local pickup in " + SHOP.city.en + ". Israel shipping available at cost with reuse‑friendly packaging."},
+      {q:"Pickup & shipping", a:"Free local pickup" /*+ SHOP.city.en */+ ". Israel shipping available at cost with reuse‑friendly packaging."},
       {q:"Custom sizes / colors", a:"Yes. Most designs can scale. Lead time 5–10 days depending on queue."},
       {q:"Returns", a:"If something arrives damaged, contact me within 7 days for a fix or replacement."}
     ],
@@ -994,6 +994,7 @@ function burst(x, y){
 
 </body>
 </html>
+
 
 
 
