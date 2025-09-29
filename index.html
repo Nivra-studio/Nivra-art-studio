@@ -894,6 +894,7 @@ function openOrder(item){
   els.qty.value = 1;
   els.modal.classList.add('open');
   updateLinks(item);
+	trackOrderOpen(item.id);
 }
 
 function closeOrder(){els.modal.classList.remove('open')}
@@ -907,6 +908,7 @@ function updateLinks(item){
   );
   const wa = `https://wa.me/${SHOP.whatsapp.replace(/\D/g,'')}?text=${message}`;
   els.waGo.href = wa;
+	els.waGo.addEventListener('click', () => trackWhatsAppClick(item.id));
   els.mailGo.href = `mailto:${SHOP.email}?subject=${encodeURIComponent((lang==='he'?'הזמנה ':'Order ')+item.title[lang])}&body=${message}`;
 }
 els.qty.addEventListener('input', ()=>{
@@ -938,6 +940,24 @@ els.enBtn.addEventListener('click',(e)=>{e.preventDefault(); lang='en'; localSto
 
 renderAll();
 </script>
+	<script>
+  // --- Track order modal opens ---
+  function trackOrderOpen(itemId) {
+    gtag('event', 'modal_open', {
+      event_category: 'shop',
+      event_label: itemId
+    });
+  }
+
+  // --- Track WhatsApp clicks from the modal ---
+  function trackWhatsAppClick(itemId) {
+    gtag('event', 'whatsapp_click', {
+      event_category: 'shop',
+      event_label: itemId
+    });
+  }
+</script>
+
 <script>
 /* Create a little star-burst on any click/tap */
 (function(){
@@ -994,6 +1014,7 @@ function burst(x, y){
 
 </body>
 </html>
+
 
 
 
